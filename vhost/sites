@@ -2,16 +2,16 @@
 
 <Macro VHost $site>
   <VirtualHost *:80>
-    ServerName $site.local.com
+    ServerName $site.local
     ServerAdmin webmaster@localhost
-    DocumentRoot /home/sam/www/$site/docroot
-    <Directory /home/sam/www/$site/docroot>
+    DocumentRoot /home/alexkb/sites/$site/docroot
+    <Directory /home/alexkb/sites/$site/docroot>
       Options Indexes FollowSymLinks MultiViews
       AllowOverride All
       Order allow,deny
       allow from all
     </Directory>
-    ErrorLog /home/sam/www/$site/error.log
+    ErrorLog /home/alexkb/sites/$site/error.log
     LogLevel notice
     CustomLog /access.log combined
   </VirtualHost>
