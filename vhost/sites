@@ -8,8 +8,7 @@
     <Directory /home/alexkb/sites/$site/docroot>
       Options Indexes FollowSymLinks MultiViews
       AllowOverride All
-      Order allow,deny
-      allow from all
+      Require all granted
     </Directory>
     ErrorLog /home/alexkb/sites/$site/error.log
     LogLevel notice
