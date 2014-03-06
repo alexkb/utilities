@@ -16,9 +16,8 @@ then
 fi
 
 SITENAME=$1
-USER='sam'
-WEBROOT="/home/$USER/www"
-DOMAIN='local.com'
+WEBROOT="/home/$USER/sites"
+DOMAIN='local'
 VHOSTNAME='sites'
 DB_USER='root'
 DB_PASS='123'
@@ -49,8 +48,8 @@ mysql -u $DB_USER -p$DB_PASS -e "create database $SITENAME;"
 echo "<?php
  \$sites['$SITENAME'] = array(
    'local_uri' => '$SITENAME.local.com',
-   'local_root' => '/home/sam/www/$SITENAME/docroot',
-   'local_path' => '/home/sam/www/$SITENAME/docroot/sites/default',
+   'local_root' => '$WEBROOT/$SITENAME/docroot',
+   'local_path' => '$WEBROOT/$SITENAME/docroot/sites/default',
    'remote_uri' => '',
    'remote_root' => '',
    'remote_path' => '',
