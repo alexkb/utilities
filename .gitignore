@@ -1,12 +1,13 @@
-# Drupal
-settings.php
-sites/*/settings.php
-sites/*/files/* 
-sites/*/files
-.htaccess
-backup
-public_html/cache 
-drushrc.php
+# Ignore configuration files that may contain sensitive information.
+docroot/sites/*/local.settings*.php
+
+# Ignore vi swp files
+*.sw*
+*.*~
+
+# Ignore paths that contain user-generated content.
+docroot/sites/*/files
+docroot/sites/*/private
 
 # Operating Systems
 .DS_Store
@@ -31,3 +32,5 @@ CVS
 
 # PHP
 error_log
+error.log
+tmp/
