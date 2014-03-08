@@ -46,9 +46,9 @@ echo "Use VHost $SITENAME" >> /etc/apache2/sites-available/$VHOSTNAME
 echo "Adding entry to /etc/hosts"
 echo "127.0.1.1 $SITENAME.$DOMAIN" >> /etc/hosts
 
-# Create empty database;
+# Create empty database. Need the wrapping backticks to allow database names with dashes
 echo "Creating empty database with root credentials"
-mysql -u $DB_USER -p$DB_PASS -e "create database $SITENAME;"
+mysql -u $DB_USER -p$DB_PASS -e "create database \`$SITENAME\`;"
 
 # Drush alias
 echo "<?php
