@@ -13,14 +13,7 @@ if [ $# -eq 0 ]; then
   exit;
 fi;
 
-if [ $(id -u) != "0" ]
-then
-  echo 'Attempting to append sudo..'
-  sudo "$0" "$@" 
-  exit $?
-fi
-
-USER=$SUDO_USER
+USER=${SUDO_USER:-$USER} # if sudo use sudo var, otherwise use user. http://stackoverflow.com/a/14106940/687274
 SITENAME=$1
 WEBROOT="/home/$USER/sites"
 DOMAIN='local'
@@ -28,7 +21,20 @@ VHOSTNAME='sites'
 DB_USER='root'
 DB_PASS='123'
 
-echo $SITENAME
+
+if [ -d "${WEBROOT}/${SITENAME}" ]; then
+  echo "The site: $SITENAME already appears to exist."
+  exit 1;
+fi
+
+if [ $(id -u) != "0" ]
+then
+  echo 'Attempting to append sudo..'
+  sudo "$0" "$@" 
+  exit $?
+fi
+
+echo "Commencing site setup for: $SITENAME"
 
 # Create the skeleton
 echo "Creating directory skeleton"
