@@ -56,12 +56,20 @@ echo "127.0.1.1 $SITENAME.$DOMAIN" >> /etc/hosts
 echo "Creating empty database with root credentials"
 mysql -u $DB_USER -p$DB_PASS -e "create database \`$SITENAME\`;"
 
+if [ ! -f "~/.drush/aliases.drushrc.php" ]; then
+  echo "<?php
+  " >> ~/.drush/aliases.drushrc.php
+  echo "Creating Drush aliases file, as none was detected."
+fi
+
 # Drush alias
-echo "<?php
+echo "
  \$aliases['$SITENAME'] = array(
    'uri' => '$SITENAME.$DOMAIN',
    '_root' => '$WEBROOT/$SITENAME/docroot',
-  );?>
+  );
   " >> ~/.drush/aliases.drushrc.php
 
 echo "Done."
+
+
