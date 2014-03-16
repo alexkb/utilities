@@ -59,15 +59,8 @@ mysql -u $DB_USER -p$DB_PASS -e "create database \`$SITENAME\`;"
 # Drush alias
 echo "<?php
  \$aliases['$SITENAME'] = array(
-   'local_uri' => '$SITENAME.$DOMAIN',
-   'local_root' => '$WEBROOT/$SITENAME/docroot',
-   'local_path' => '$WEBROOT/$SITENAME/docroot/sites/default',
-   'remote_uri' => '',
-   'remote_root' => '',
-   'remote_path' => '',
-   'remote_host' => '',
-   'remote_user' => REMOTE_USER,
-   'remote_dump' => '', 
+   'uri' => '$SITENAME.$DOMAIN',
+   '_root' => '$WEBROOT/$SITENAME/docroot',
   );?>
   " >> ~/.drush/aliases.drushrc.php
 
