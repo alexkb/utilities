@@ -40,7 +40,10 @@
   count = rev-list HEAD --count 
   # Show files ignored by git:
   ign = ls-files -o -i --exclude-standard
-
+  p = pull
+  f = fetch
+  r = reset --soft HEAD^
+  
 [giggle]
 	main-window-maximized = false
 	main-window-geometry = 700x550+694+195
